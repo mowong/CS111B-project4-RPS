@@ -115,22 +115,23 @@ public class RPSGUIGame extends JFrame {
 			}else if (event.getSource() == scissorsButton){
 				userPlay.setIcon(scissorsImage);
 			}
-//			 ???compMove = game.generateComputerPlay();
-//			if (event.getSource() == rockButton){
-//				compPlay.setIcon(rockImage);
-//			}else if (event.getSource() == paperButton){
-//				compPlay.setIcon(paperImage);
-//			}else if (event.getSource() == scissorsButton){
-//				compPlay.setIcon(scissorsImage);
-//			}
+			
+			RPSGame.Moves compMove = game.generateComputerPlay();
+			if (compMove == RPSGame.Moves.ROCK){
+				compPlay.setIcon(rockImage);
+			}else if (compMove == RPSGame.Moves.PAPER){
+				compPlay.setIcon(paperImage);
+			}else if (compMove == RPSGame.Moves.SCISSORS){
+				compPlay.setIcon(scissorsImage);
+			}
 			game.findWinner();
 			updateGameStats();
 			
 	}
 	private void updateGameStats(){
-		statusC.setText("" + game.getNumOfComputerWins());
-		statusU.setText("" + game.getNumOfUserWins());
-		statusT.setText("" + game.getNumOfTies());
+		statusC.setText("Computer Wins: " + game.getNumOfComputerWins());
+		statusU.setText("User Wins: " + game.getNumOfUserWins());
+		statusT.setText("Ties: " + game.getNumOfTies());
 	}
 }
 	
