@@ -110,10 +110,13 @@ public class RPSGUIGame extends JFrame {
 		public void actionPerformed(ActionEvent event) {
 			if (event.getSource() == rockButton){
 				userPlay.setIcon(rockImage);
+				game.setUserMove(RPSGame.Moves.ROCK);
 			}else if (event.getSource() == paperButton){
 				userPlay.setIcon(paperImage);
+				game.setUserMove(RPSGame.Moves.PAPER);
 			}else if (event.getSource() == scissorsButton){
 				userPlay.setIcon(scissorsImage);
+				game.setUserMove(RPSGame.Moves.SCISSORS);
 			}
 			
 			RPSGame.Moves compMove = game.generateComputerPlay();
@@ -142,3 +145,4 @@ public class RPSGUIGame extends JFrame {
 	}
 }
 	
+
