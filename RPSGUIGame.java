@@ -108,6 +108,7 @@ public class RPSGUIGame extends JFrame {
 	/* determines which button was clicked and updates the game accordingly */
 	private class GameListener implements ActionListener {
 		public void actionPerformed(ActionEvent event) {
+			
 			if (event.getSource() == rockButton){
 				userPlay.setIcon(rockImage);
 				game.setUserMove(RPSGame.Moves.ROCK);
@@ -119,19 +120,23 @@ public class RPSGUIGame extends JFrame {
 				game.setUserMove(RPSGame.Moves.SCISSORS);
 			}
 			
-			RPSGame.Moves compMove = game.generateComputerPlay();
-			if (compMove == RPSGame.Moves.ROCK){
-				compPlay.setIcon(rockImage);
-			}else if (compMove == RPSGame.Moves.PAPER){
-				compPlay.setIcon(paperImage);
-			}else if (compMove == RPSGame.Moves.SCISSORS){
-				compPlay.setIcon(scissorsImage);
-			}
-			game.findWinner();
+			computerPlay();
 			updateGameStats();
-			
 	}
+		
+	private void computerPlay(){
+		RPSGame.Moves compMove = game.generateComputerPlay();
+		if (compMove == RPSGame.Moves.ROCK){
+			compPlay.setIcon(rockImage);
+		}else if (compMove == RPSGame.Moves.PAPER){
+			compPlay.setIcon(paperImage);
+		}else if (compMove == RPSGame.Moves.SCISSORS){
+			compPlay.setIcon(scissorsImage);
+		}
+	}
+	
 	private void updateGameStats(){
+		outcome.setText("Winner: " + game.findWinner());
 		statusC.setText("Computer Wins: " + game.getNumOfComputerWins());
 		statusU.setText("User Wins: " + game.getNumOfUserWins());
 		statusT.setText("Ties: " + game.getNumOfTies());
@@ -145,4 +150,3 @@ public class RPSGUIGame extends JFrame {
 	}
 }
 	
-
